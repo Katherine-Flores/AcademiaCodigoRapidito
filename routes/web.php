@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\CatedraticosController;
+use App\Http\Controllers\SucursalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/catedraticos', CatedraticosController::class);
+Route::get('/sucursal', SucursgitalController::class);

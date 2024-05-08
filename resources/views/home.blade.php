@@ -166,7 +166,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="me-3">
-                    <a href="#" class="btn-link">Sucursales</a>
+                    <a href="/sucursal" class="btn-link {{ Request::is('sucursal') ? 'active' : '' }}">Sucursales</a>
                 </li>
                 <li class="me-3">
                     <a href="#" class="btn-link">Grados</a>

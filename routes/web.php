@@ -22,4 +22,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/catedraticos', CatedraticosController::class);
-Route::get('/sucursal', SucursgitalController::class);
+Route::get('/sucursal', SucursalController::class);

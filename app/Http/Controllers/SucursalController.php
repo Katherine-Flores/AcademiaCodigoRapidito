@@ -11,9 +11,9 @@ class SucursalController extends Controller
 {
 
 
-    $sucursal =  Sucursal::all();
+    $sucursales =  Sucursal::all();
 
-    return view('layouts.sucursal', compact('sucursal'));
+    return view('layouts.sucursal', compact('sucursales'));
 }
 
     //

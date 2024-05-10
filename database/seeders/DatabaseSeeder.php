@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Alumno;
 use App\Models\Catedratico;
 use Illuminate\Database\Seeder;
 
@@ -23,5 +24,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         Catedratico::factory(12)->create();
+        Alumno::factory(12)->create();
     }
 }

@@ -179,10 +179,10 @@
                     <a href="/sucursal" class="btn-link {{ Request::is('sucursal') ? 'active' : '' }}">Sucursales</a>
                 </li>
                 <li class="me-3">
-                    <a href="#" class="btn-link">Grados</a>
+                    <a href="/grados" class="btn-link {{ Request::is('grados') ? 'active' : '' }} ">Grados</a>
                 </li>
                 <li class="me-3">
-                    <a href="#" class="btn-link " >Cursos</a>
+                    <a href="/cursos" class="btn-link {{ Request::is('cursos') ? 'active' : '' }}">Cursos</a>
                 </li>
                 <li class="me-3">
                     <a href="/acerca-de" class="btn-link  {{ Request::is('acerca-de') ? 'active' : '' }}">Acerca de</a>

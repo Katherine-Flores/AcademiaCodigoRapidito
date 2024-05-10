@@ -38,12 +38,22 @@
             font-size: large;
             color: var(--dark-blue);
         }
+
+        .text2{
+            font-family: "Poppins", sans-serif;
+            font-size: medium;
+            color: var(--dark-blue);
+        }
+
+
+
+
         .btn-link{
             padding: 10px;
             text-decoration: none;
             color: var(--dark-blue);
         }
-        .btn-link:hover, .btn-link:active{
+        .btn-link:hover, .btn-link.active{
             background-color: var(--cornflower-blue);
             border-radius: 25px;
             color: var(--athens-gray);
@@ -159,7 +169,7 @@
 <nav class="navbar navbar-expand-lg bg-white text-ui z-1">
     <div class="container-fluid">
         <i class='fi fi-sr-graduation-cap ms-5 me-3' style="font-size: 35px; color: var(--cornflower-blue)"></i>
-        <a class="navbar-brand me-3" href="#" style="font-weight: bold;">Código Rapidito</a>
+        <a class="navbar-brand me-3" href="/" style="font-weight: bold;">Código Rapidito</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -172,10 +182,10 @@
                     <a href="#" class="btn-link">Grados</a>
                 </li>
                 <li class="me-3">
-                    <a href="#" class="btn-link">Cursos</a>
+                    <a href="#" class="btn-link " >Cursos</a>
                 </li>
                 <li class="me-3">
-                    <a href="#" class="btn-link">Acerca de</a>
+                    <a href="/acerca-de" class="btn-link  {{ Request::is('acerca-de') ? 'active' : '' }}">Acerca de</a>
                 </li>
             </ul>
 

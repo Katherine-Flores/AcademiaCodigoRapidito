@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,7 +12,7 @@ return new class extends Migration
     {
         Schema::create('catedratico', function (Blueprint $table) {
             $table->id("Codigo_Catedratico");
-            $table->string("Nombre",125);
+            $table->string("Nombre", 125);
             $table->string("Correo")->unique();
             $table->string("Telefono", 12);
             $table->timestamps();

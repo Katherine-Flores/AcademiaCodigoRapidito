@@ -14,12 +14,11 @@ class gradoSeeder extends Seeder
     public function run(): void
     {
         $grado = new Grado();
-        $grado -> Nombre = "Novatos";
-        $grado-> save();
+        $grado->Nombre = "Novatos";
+        $grado->save();
 
         $grado2 = new Grado();
-        $grado2 -> Nombre = "Expertos";
-        $grado2-> save();
-
+        $grado2->Nombre = "Expertos";
+        $grado2->save();
     }
 }

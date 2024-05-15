@@ -8,5 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Sucursal extends Model
 {
     use HasFactory;
+
     protected $table = "sucursal";
+
+    protected $primaryKey = 'Id_Sucursal';
+
+    public function asignaciones()
+    {
+        return $this->hasMany(Asignacion::class, 'Id_Sucursal');
+    }
 }

@@ -7,14 +7,9 @@ use App\Models\Sucursal;
 
 class SucursalController extends Controller
 {
-  public function __invoke()
-{
-
-
-    $sucursales =  Sucursal::all();
-
-    return view('layouts.sucursal', compact('sucursales'));
-}
-
-    //
+    public function __invoke()
+    {
+        $sucursales = Sucursal::all();
+        return view('layouts.sucursal', compact('sucursales'));
+    }
 }

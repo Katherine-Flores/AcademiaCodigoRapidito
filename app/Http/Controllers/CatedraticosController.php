@@ -10,8 +10,6 @@ class CatedraticosController extends Controller
     public function __invoke()
     {
         $catedraticos = Catedratico::all();
-
         return view('layouts.catedraticos', compact('catedraticos'));
     }
-
 }

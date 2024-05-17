@@ -44,8 +44,20 @@ Route::get('/cursos', [CursosController::class, '__invoke'])->name('cursos.invok
 Route::get('/acerca-de', [AcerdaController::class, 'index'])->name('acerca-de');
 
 /* Rutas de Asignación */
-Route::get('/asignacion', [AsignacionController::class, 'index'])->name('asignacion'); //
+Route::get('/asignacion', [AsignacionController::class, 'index'])->name('asignacion'); // Vista del filtrado de asignaciones
 Route::get('/asignaciones', [AsignacionController::class, '__invoke'])->name('asignacion.invoke'); // Vista de todos los registros de la tabla asignación
 Route::post('/regitro', [AsignacionController::class, 'store'])->name('asignacion.store'); // Lógica para almacenar un nuevo registro
 Route::put('/modificar/{id}', [AsignacionController::class, 'update'])->name('asignacion.update'); // Lógica para modificar un registro existente
 Route::delete('/eliminar/{id}', [AsignacionController::class, 'delete'])->name('asignacion.delete'); // Lógica para eliminar un registro existente
+
+/* Rutas del CRUD de Curso */
+Route::get('/curso', [CursosController::class, 'index'])->name('curso'); // Vista del filtrado de cursos
+Route::post('/regitro-curso', [CursosController::class, 'create'])->name('cursos.create'); // Lógica para almacenar un nuevo registro
+Route::put('/modificar-curso/{id}', [CursosController::class, 'update'])->name('cursos.update'); // Lógica para modificar un registro existente
+Route::delete('/eliminar-curso/{id}', [CursosController::class, 'delete'])->name('cursos.delete'); // Lógica para eliminar un registro existente
+
+/* Rutas del CRUD de Grado */
+Route::get('/grado', [GradosController::class, 'index'])->name('grado'); // Vista del filtrado de grados
+Route::post('/regitro-grado', [GradosController::class, 'create'])->name('grados.create'); // Lógica para almacenar un nuevo registro
+Route::put('/modificar-grado/{id}', [GradosController::class, 'update'])->name('grados.update'); // Lógica para modificar un registro existente
+Route::delete('/eliminar-grado/{id}', [GradosController::class, 'delete'])->name('grados.delete'); // Lógica para eliminar un registro existente

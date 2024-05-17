@@ -21,21 +21,22 @@ class AsignacionController extends Controller
 
         if ($request->filled('busqueda')) {
             $search = $request->busqueda;
-            $query->where('Id_Asignacion', 'like', "%{$search}%")
-                ->orWhereHas('catedratico', function ($q) use ($search) {
-                    $q->where('Nombre', 'like', "%{$search}%");
-                })
-                ->orWhere('Codigo_Catedratico', 'like', "%{$search}%")
-                ->orWhereHas('sucursal', function ($q) use ($search) {
-                    $q->where('Nombre', 'like', "%{$search}%");
-                })
-                ->orWhere('Id_Sucursal', 'like', "%{$search}%")
-                ->orWhereHas('grado', function ($q) use ($search) {
-                    $q->where('Nombre', 'like', "%{$search}%");
-                })
-                ->orWhereHas('curso', function ($q) use ($search) {
-                    $q->where('Nombre', 'like', "%{$search}%");
-                });
+            $query->where(function ($q) use ($search) {
+                $q->where('Id_Asignacion', 'like', "%{$search}%")
+                    ->orWhereHas('catedratico', function ($q) use ($search) {
+                        $q->where('Nombre', 'like', "%{$search}%");
+                    })
+                    ->orWhere('Codigo_Catedratico', 'like', "%{$search}%")
+                    ->orWhereHas('sucursal', function ($q) use ($search) {
+                        $q->where('Nombre', 'like', "%{$search}%");
+                    })
+                    ->orWhereHas('grado', function ($q) use ($search) {
+                        $q->where('Nombre', 'like', "%{$search}%");
+                    })
+                    ->orWhereHas('curso', function ($q) use ($search) {
+                        $q->where('Nombre', 'like', "%{$search}%");
+                    });
+            });
         }
 
         $asignaciones = $query->paginate(10);

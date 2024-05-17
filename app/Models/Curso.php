@@ -17,4 +17,9 @@ class Curso extends Model
     {
         return $this->hasMany(Asignacion::class, 'Id_Curso');
     }
+
+    public function grado()
+    {
+        return $this->belongsTo(Grado::class, 'Id_Grado');
+    }
 }

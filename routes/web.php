@@ -49,3 +49,11 @@ Route::get('/asignaciones', [AsignacionController::class, '__invoke'])->name('as
 Route::post('/regitro', [AsignacionController::class, 'store'])->name('asignacion.store'); // Lógica para almacenar un nuevo registro
 Route::put('/modificar/{id}', [AsignacionController::class, 'update'])->name('asignacion.update'); // Lógica para modificar un registro existente
 Route::delete('/eliminar/{id}', [AsignacionController::class, 'delete'])->name('asignacion.delete'); // Lógica para eliminar un registro existente
+
+/* rutas de catedraticos  */
+
+Route::get('/Catedratico', [CatedraticosController::class, 'index'])->name('Catedratico'); //
+Route::get('/Catedraticos', [CatedraticosController::class, '__invoke'])->name('Catedratico.invoke'); // Vista de todos los registros de la tabla asignación
+Route::post('/regitro-catedratico', [CatedraticosController::class, 'create'])->name('Catedratico.create'); // Lógica para almacenar un nuevo registro
+Route::put('/modificar-catedratico/{id}', [CatedraticosController::class, 'update'])->name('Catedratico.update'); // Lógica para modificar un registro existente
+Route::delete('/eliminar-catedratico/{id}', [CatedraticosController::class, 'delete'])->name('Catedratico.delete'); // Lógica para eliminar un registro existente

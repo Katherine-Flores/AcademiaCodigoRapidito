@@ -47,7 +47,7 @@ class AsignacionController extends Controller
         $asignacion = new Asignacion();
 
         $asignacion->Fecha_Asignacion = $request->Fecha_Asignacion;
-        $asignacion->Nombre = $request->Id_Curso;
+        $asignacion->Id_Curso = $request->Id_Curso;
         $asignacion->Codigo_Catedratico = $request->Codigo_Catedratico;
         $asignacion->Id_Sucursal = $request->Id_Sucursal;
         $asignacion->Id_Grado = $request->Id_Grado;

@@ -14,6 +14,7 @@ return new  class extends Migration {
             $table->id("Id_Curso");
             $table->string("Nombre", 125);
             $table->string("Duracion", 2);
+            $table->foreignId('Id_Grado')->constrained('grado', 'Id_Grado')->onDelete('cascade');
             $table->timestamps();
         });
     }

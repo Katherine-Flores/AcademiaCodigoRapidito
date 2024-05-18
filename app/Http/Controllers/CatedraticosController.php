@@ -11,13 +11,28 @@ class CatedraticosController extends Controller
     public function __invoke()
     {
         $catedraticos = Catedratico::all();
-        return view('layouts.catedraticos', compact('catedraticos'));
+        return view('layouts.CRUD.catedraticos', compact('catedraticos'));
+    }
+
+    public function index(Request $request)
+    {
+        $query = Catedratico::query();
+
+        if ($request->filled('busqueda')) {
+            $search = $request->busqueda;
+            $query->where(function ($q) use ($search) {
+                $q->where('Codigo_Catedratico', 'like', "%{$search}%")
+                    ->orWhere('Nombre', 'like', "%{$search}%");
+            });
+        }
+
+        $catedraticos = $query->paginate(10);
+        return view('layouts.CRUD.catedraticos', compact('catedraticos'));
     }
 
     public function create(CreateCatedratico $request)
     {
         $Catedratico = new Catedratico();
-
 
         $Catedratico->Codigo_Catedratico = $request->Codigo_Catedratico;
         $Catedratico->Nombre = $request->Nombre;
@@ -26,11 +41,10 @@ class CatedraticosController extends Controller
 
         $Catedratico->save();
 
-        //return redirect()->route('asignaciones');
         if ( $Catedratico->save() == true) {
-            return back()->with("correcto", "Catedratico registrado correctamente");
+            return back()->with("correcto", "Catedrático registrado correctamente");
         } else {
-            return back()->with("incorrecto", "Error al registrar catedratico");
+            return back()->with("incorrecto", "Error al registrar catedrático");
         }
     }
 
@@ -45,8 +59,8 @@ class CatedraticosController extends Controller
         $Catedratico->save();
 
         return $Catedratico->save()
-            ? back()->with("correcto", "Catedratico modificado correctamente")
-            : back()->with("incorrecto", "Error al modificar catedratico");
+            ? back()->with("correcto", "Catedrático modificado correctamente")
+            : back()->with("incorrecto", "Error al modificar catedrático");
     }
 
     public function delete($id)
@@ -55,7 +69,7 @@ class CatedraticosController extends Controller
         $Catedratico->delete();
 
         return $Catedratico->delete()
-            ? back()->with("incorrecto", "Error al eliminar catedratico")
-            : back()->with("correcto", "Catedratico eliminado correctamente");
+            ? back()->with("incorrecto", "Error al eliminar catedrático")
+            : back()->with("correcto", "Catedrático eliminado correctamente");
     }
 }

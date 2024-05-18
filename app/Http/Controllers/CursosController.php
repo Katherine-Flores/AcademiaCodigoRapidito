@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCurso;
+use App\Models\Grado;
 use Illuminate\Http\Request;
 use App\Models\Curso;
 
@@ -11,11 +12,14 @@ class CursosController extends Controller
     public function __invoke()
     {
         $cursos = Curso::all();
-        return view('layouts.cursos', compact('cursos'));
+        $grados = Grado::all();
+        return view('layouts.cursos', compact('cursos','grados'));
     }
 
     public function index(Request $request)
     {
+        $grados = Grado::all();
+
         $query = Curso::with(['grado']);
 
         if ($request->filled('busqueda')) {
@@ -30,7 +34,7 @@ class CursosController extends Controller
         }
 
         $cursos = $query->paginate(10);
-        return view('layouts.CRUD.cursos', compact('cursos'));
+        return view('layouts.CRUD.cursos', compact('cursos', 'grados'));
     }
 
     public function create(CreateCurso $request)

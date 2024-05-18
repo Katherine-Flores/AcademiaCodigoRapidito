@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAsignacion;
 use App\Models\Asignacion;
+use App\Models\Curso;
+use App\Models\Grado;
+use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,11 +15,17 @@ class AsignacionController extends Controller
     public function __invoke()
     {
         $asignaciones = Asignacion::all();
-        return view('layouts.asignaciones', compact('asignaciones'));
+        $grados = Grado::all();
+        $cursos = Curso::all();
+        $sucursales = Sucursal::all();
+        return view('layouts.CRUD.asignaciones', compact('asignaciones', 'grados', 'cursos', 'sucursales'));
     }
 
     public function index(Request $request)
     {
+        $grados = Grado::all();
+        $cursos = Curso::all();
+        $sucursales = Sucursal::all();
         $query = Asignacion::with(['catedratico', 'sucursal', 'grado', 'curso']);
 
         if ($request->filled('busqueda')) {
@@ -40,7 +49,7 @@ class AsignacionController extends Controller
         }
 
         $asignaciones = $query->paginate(10);
-        return view('layouts.asignaciones', compact('asignaciones'));
+        return view('layouts.CRUD.asignaciones', compact('asignaciones', 'grados','cursos','sucursales'));
     }
 
     public function store(StoreAsignacion $request)

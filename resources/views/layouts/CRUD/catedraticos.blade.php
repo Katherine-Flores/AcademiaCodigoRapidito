@@ -33,7 +33,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1 class="text-center p-3">Catedraticos</h1>
+<h1 class="text-center p-3">Catedráticos</h1>
 
 @if(session("correcto"))
     <div class="alert alert-success">{{session("correcto")}}</div>
@@ -44,7 +44,7 @@
 @endif
 
 <div class="d-md-flex justify-content-md-end me-5">
-    <form action="{{ route('Catedratico') }}" method="GET">
+    <form action="{{ route('catedratico') }}" method="GET">
         <div class="btn-group">
             <input type="text" name="busqueda" class="form-control">
             <input type="submit" value="Buscar" class="btn btn-primary">
@@ -58,11 +58,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar Asignación</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar Catedrático</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('Catedratico.create')}}" method="POST">
+                    <form action="{{route('catedratico.create')}}" method="POST">
                         @csrf
                         <div class="form-group row mb-3">
                             <label class="col-sm-5 col-form-label">Codigo Catedratico</label>
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="form-group row mb-3">
-                            <label class="col-sm-5 col-form-label">Telefono</label>
+                            <label class="col-sm-5 col-form-label">Teléfono</label>
                             <div class="col-sm-7">
                                 <input type="number" name="Telefono" class="form-control">
                             </div>
@@ -101,16 +101,16 @@
     </div>
 
     <button class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#modalRegistrar">
-        Nuevo Catedratico
+        Nuevo Catedrático
     </button>
 
     <table class="table table-striped table-bordered table-hover">
         <thead class="bg-primary text-white">
         <tr>
-            <th class="align-middle">Codigo Catedratico</th>
+            <th class="align-middle">Código Catedrático</th>
             <th class="align-middle">Nombre</th>
             <th class="align-middle">Correo</th>
-            <th class="align-middle">Telefono</th>
+            <th class="align-middle">Teléfono</th>
             <th class="align-middle">Opciones</th>
         </tr>
         </thead>
@@ -128,7 +128,7 @@
                         <i class='bx bxs-edit'></i>
                     </a>
                     <!-- Formulario de Eliminar -->
-                    <form action="{{ route('Catedratico.delete', $Catedratico->Codigo_Catedratico) }}" method="POST"
+                    <form action="{{ route('catedratico.delete', $Catedratico->Codigo_Catedratico) }}" method="POST"
                           style="display:inline;" class="d-inline delete-form">
                         @csrf
                         @method('DELETE')
@@ -144,30 +144,23 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar Catedratico</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar Catedrático</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('Catedratico.update', $Catedratico->Codigo_Catedratico) }}"
+                                <form action="{{ route('catedratico.update', $Catedratico->Codigo_Catedratico) }}"
                                       method="POST">
                                     @csrf
                                     @method('PUT')
 
-
                                     <div class="form-group row mb-3">
-                                        <label class="col-sm-5 col-form-label">Codigo Catedratico</label>
+                                        <label class="col-sm-5 col-form-label">Código Catedrático</label>
                                         <div class="col-sm-7">
                                             <input type="number" name="Codigo_Catedratico" class="form-control"
                                                    value="{{$Catedratico->Codigo_Catedratico}}">
                                         </div>
                                     </div>
-
-
-
-
-
-
                                     <div class="form-group row mb-3">
                                         <label class="col-sm-5 col-form-label">Nombre</label>
                                         <div class="col-sm-7">
@@ -175,7 +168,6 @@
                                                    value="{{$Catedratico->Nombre}}">
                                         </div>
                                     </div>
-
                                     <div class="form-group row mb-3">
                                         <label class="col-sm-5 col-form-label">Correo</label>
                                         <div class="col-sm-7">
@@ -183,8 +175,6 @@
                                                    value="{{$Catedratico->Correo}}">
                                         </div>
                                     </div>
-
-
                                     <div class="form-group row mb-3">
                                         <label class="col-sm-5 col-form-label">Telefono</label>
                                         <div class="col-sm-7">

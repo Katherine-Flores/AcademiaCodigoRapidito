@@ -81,8 +81,9 @@
                             <div class="col-sm-7">
                                 <select name="Id_Grado" id="" class="form-select">
                                     <option selected>Seleccione el grado</option>
-                                    <option value="1">Novatos</option>
-                                    <option value="2">Expertos</option>
+                                    @foreach($grados as $grado)
+                                        <option value={{$grado->Id_Grado}}>{{$grado->Nombre}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -167,8 +168,9 @@
                                         <div class="col-sm-7">
                                             <select name="Id_Grado" id="" class="form-select">
                                                 <option selected>Seleccione el grado</option>
-                                                <option value="1" {{$curso->Id_Grado == 1 ? 'selected' : '' }}>Novatos</option>
-                                                <option value="2" {{$curso->Id_Grado == 2 ? 'selected' : '' }}>Expertos</option>
+                                                @foreach($grados as $grado)
+                                                    <option value="{{$grado->Id_Grado}}" {{$curso->Id_Grado == $grado->Id_Grado ? 'selected' : ''}}>{{$grado->Nombre}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

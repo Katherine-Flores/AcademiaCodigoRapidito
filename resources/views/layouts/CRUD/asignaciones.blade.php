@@ -75,8 +75,9 @@
                             <div class="col-sm-7">
                                 <select name="Id_Grado" id="" class="form-select">
                                     <option selected>Seleccione un grado</option>
-                                    <option value="1">Novatos</option>
-                                    <option value="2">Expertos</option>
+                                    @foreach($grados as $grado)
+                                        <option value={{$grado->Id_Grado}}>{{$grado->Nombre}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -85,10 +86,9 @@
                             <div class="col-sm-7">
                                 <select name="Id_Curso" id="" class="form-select">
                                     <option selected>Seleccione un curso</option>
-                                    <option value="1">Principiantes I</option>
-                                    <option value="2">Principiantes II</option>
-                                    <option value="3">Avanzados I</option>
-                                    <option value="4">Avanzados II</option>
+                                    @foreach($cursos as $curso)
+                                        <option value={{$curso->Id_Curso}}>{{$curso->Nombre}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -103,10 +103,9 @@
                             <div class="col-sm-7">
                                 <select name="Id_Sucursal" id="" class="form-select">
                                     <option selected>Seleccione una sucursal</option>
-                                    <option value="1">Morales</option>
-                                    <option value="2">Puerto Barrios</option>
-                                    <option value="3">El Estor</option>
-                                    <option value="4">Los Amates</option>
+                                    @foreach($sucursales as $sucursal)
+                                        <option value={{$sucursal->Id_Sucursal}}>{{$sucursal->Nombre}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -190,12 +189,9 @@
                                         <div class="col-sm-7">
                                             <select name="Id_Grado" id="" class="form-select">
                                                 <option selected>Seleccione un grado</option>
-                                                <option value="1" {{$asignacion->Id_Grado == 1 ? 'selected' : '' }}>
-                                                    Novatos
-                                                </option>
-                                                <option value="2" {{$asignacion->Id_Grado == 2 ? 'selected' : '' }}>
-                                                    Expertos
-                                                </option>
+                                                @foreach($grados as $grado)
+                                                    <option value="{{$grado->Id_Grado}}" {{$asignacion->Id_Grado == $grado->Id_Grado ? 'selected' : ''}}>{{$grado->Nombre}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -204,18 +200,9 @@
                                         <div class="col-sm-7">
                                             <select name="Id_Curso" id="" class="form-select">
                                                 <option selected>Seleccione un curso</option>
-                                                <option value="1" {{$asignacion->Id_Curso == 1 ? 'selected' : '' }}>
-                                                    Principiantes I
-                                                </option>
-                                                <option value="2" {{$asignacion->Id_Curso == 2 ? 'selected' : '' }}>
-                                                    Principiantes II
-                                                </option>
-                                                <option value="3" {{$asignacion->Id_Curso == 3 ? 'selected' : '' }}>
-                                                    Avanzados I
-                                                </option>
-                                                <option value="4" {{$asignacion->Id_Curso == 4 ? 'selected' : '' }}>
-                                                    Avanzados II
-                                                </option>
+                                                @foreach($cursos as $curso)
+                                                    <option value="{{$curso->Id_Curso}}" {{$asignacion->Id_Curso == $curso->Id_Curso ? 'selected' : ''}}>{{$curso->Nombre}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -231,18 +218,9 @@
                                         <div class="col-sm-7">
                                             <select name="Id_Sucursal" id="" class="form-select">
                                                 <option selected>Seleccione una sucursal</option>
-                                                <option value="1" {{$asignacion->Id_Sucursal == 1 ? 'selected' : ''}}>
-                                                    Morales
-                                                </option>
-                                                <option value="2" {{$asignacion->Id_Sucursal == 2 ? 'selected' : ''}}>
-                                                    Puerto Barrios
-                                                </option>
-                                                <option value="3" {{$asignacion->Id_Sucursal == 3 ? 'selected' : ''}}>El
-                                                    Estor
-                                                </option>
-                                                <option value="4" {{$asignacion->Id_Sucursal == 4 ? 'selected' : ''}}>
-                                                    Los Amates
-                                                </option>
+                                                @foreach($sucursales as $sucursal)
+                                                    <option value="{{$sucursal->Id_Sucursal}}" {{$asignacion->Id_Sucursal == $sucursal->Id_Sucursal ? 'selected' : ''}}>{{$sucursal->Nombre}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

@@ -10,4 +10,6 @@ class Alumno extends Model
     use HasFactory;
 
     protected $table = "alumno";
+
+    protected $primaryKey = 'Codigo_Alumno';
 }

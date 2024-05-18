@@ -6,6 +6,7 @@ use App\Http\Controllers\GradosController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\AcerdaController;
 use App\Http\Controllers\AsignacionController;
+use App\Http\Controllers\AlumnosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,3 +68,10 @@ Route::get('/grado', [GradosController::class, 'index'])->name('grado'); // Vist
 Route::post('/regitro-grado', [GradosController::class, 'create'])->name('grados.create'); // Lógica para almacenar un nuevo registro
 Route::put('/modificar-grado/{id}', [GradosController::class, 'update'])->name('grados.update'); // Lógica para modificar un registro existente
 Route::delete('/eliminar-grado/{id}', [GradosController::class, 'delete'])->name('grados.delete'); // Lógica para eliminar un registro existente
+
+/* Rutas del CRUD de Alumno */
+Route::get('/alumnos', [AlumnosController::class, '__invoke'])->name('alumno.invoke'); // Vista de todos los registros de la tabla alumno
+Route::get('/alumno', [AlumnosController::class, 'index'])->name('alumno'); // Vista del filtrado de alumnos
+Route::post('/regitro-alumno', [AlumnosController::class, 'create'])->name('alumno.create'); // Lógica para almacenar un nuevo registro
+Route::put('/modificar-alumno/{id}', [AlumnosController::class, 'update'])->name('alumno.update'); // Lógica para modificar un registro existente
+Route::delete('/eliminar-alumno/{id}', [AlumnosController::class, 'delete'])->name('alumno.delete'); // Lógica para eliminar un registro existente

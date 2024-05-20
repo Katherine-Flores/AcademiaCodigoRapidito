@@ -33,7 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/catedraticos', [CatedraticosController::class, '__invoke'])->name('catedraticos.invoke');
 
 /* Ruta para visualizar los registros de la tabla sucursal */
-Route::get('/sucursal', [SucursalController::class, '__invoke'])->name('sucursal.invoke');
+Route::get('/sucursales', [SucursalController::class, '__invoke'])->name('sucursal.invoke');
 
 /* Ruta para visualizar los registros de la tabla grado */
 Route::get('/grados', [GradosController::class, '__invoke'])->name('grados.invoke');
@@ -68,6 +68,12 @@ Route::get('/grado', [GradosController::class, 'index'])->name('grado'); // Vist
 Route::post('/regitro-grado', [GradosController::class, 'create'])->name('grados.create'); // Lógica para almacenar un nuevo registro
 Route::put('/modificar-grado/{id}', [GradosController::class, 'update'])->name('grados.update'); // Lógica para modificar un registro existente
 Route::delete('/eliminar-grado/{id}', [GradosController::class, 'delete'])->name('grados.delete'); // Lógica para eliminar un registro existente
+
+/* Rutas del CRUD de Sucursal */
+Route::get('/sucursal', [SucursalController::class, 'index'])->name('sucursal'); // // Vista del filtrado de catedraticos
+Route::post('/regitro-sucursal', [SucursalController::class, 'create'])->name('sucursal.create'); // Lógica para almacenar un nuevo registro
+Route::put('/modificar-sucursal/{id}', [SucursalController::class, 'update'])->name('sucursal.update'); // Lógica para modificar un registro existente
+Route::delete('/eliminar-sucursal/{id}', [SucursalController::class, 'delete'])->name('sucursal.delete'); // Lógica para eliminar un registro existente
 
 /* Rutas del CRUD de Alumno */
 Route::get('/alumnos', [AlumnosController::class, '__invoke'])->name('alumno.invoke'); // Vista de todos los registros de la tabla alumno

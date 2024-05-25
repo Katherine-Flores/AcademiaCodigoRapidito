@@ -10,7 +10,7 @@ class AlumnosController extends Controller
 {
     public function __invoke()
     {
-        $alumnos = Alumno::all();
+        $alumnos = Alumno::paginate(5);
         return view('layouts.CRUD.alumnos', compact('alumnos'));
     }
 
@@ -26,7 +26,7 @@ class AlumnosController extends Controller
             });
         }
 
-        $alumnos = $query->paginate(20);
+        $alumnos = $query->paginate(5);
         return view('layouts.CRUD.alumnos', compact('alumnos'));
     }
 

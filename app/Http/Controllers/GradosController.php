@@ -10,7 +10,7 @@ class GradosController extends Controller
 {
     public function __invoke()
     {
-        $grados = Grado::all();
+        $grados = Grado::paginate(5);
         return view('layouts.grados', compact('grados'));
     }
 
@@ -26,7 +26,7 @@ class GradosController extends Controller
             });
         }
 
-        $grados = $query->paginate(10);
+        $grados = $query->paginate(5);
         return view('layouts.CRUD.grados', compact('grados'));
     }
 

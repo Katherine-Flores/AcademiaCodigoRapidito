@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
-    'title_prefix' => '',
+    'title' => '',
+    'title_prefix' => 'ACR | ',
     'title_postfix' => '',
 
     /*
@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>Código</b>Rapidito',
+    'logo_img' => 'vendor/adminlte/dist/img/logo.svg',
+    'logo_img_class' => 'brand-image',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'Código Rapidito',
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/logo.svg',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -113,9 +113,9 @@ return [
         'enabled' => true,
         'mode' => 'fullscreen',
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'AdminLTE Preloader Image',
-            'effect' => 'animation__shake',
+            'path' => 'vendor/adminlte/dist/img/logo.svg',
+            'alt' => 'Academia Código Rapidito Preloader Image',
+            'effect' => '',
             'width' => 60,
             'height' => 60,
         ],
@@ -154,8 +154,8 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -191,7 +191,7 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => '',
+    'classes_brand' => 'bg-white',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -295,95 +295,61 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type' => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
 
         // Sidebar items:
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Inicio',
+            'url' => '/admin',
+            'icon' => 'fas fa-fw fa-home'
+            /*'can' => 'admin'*/
+        ],
+        ['header' => 'Asignaciones'],
+        [
+            'text' => 'Asignaciones',
+            'route' => 'asignacion.invoke',
+            'icon' => 'fas fa-fw fa-clipboard'
+            /*'can' => 'admin'*/
         ],
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
-        ],
-        [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text' => 'important',
-            'icon_color' => 'red',
+            'text' => 'Inscripciones',
             'url' => '#',
+            'icon' => 'fas fa-fw fa-user-plus'
+            /*'can' => 'admin'*/
+        ],
+        ['header' => 'Gestión de Entidades'],
+        [
+            'text' => 'Alumnos',
+            'route' => 'alumno.invoke',
+            'icon' => 'fas fa-fw fa-user'
+            /*'can' => 'admin'*/
         ],
         [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
+            'text' => 'Catedraticos',
+            'route' => 'catedraticos.invoke',
+            'icon' => 'fas fa-fw fa-chalkboard'
+            /*'can' => 'admin'*/
         ],
         [
-            'text' => 'information',
+            'text' => 'Sucursales',
+            'route' => 'sucursal',
+            'icon' => 'fas fa-fw fa-school'
+            /*'can' => 'admin'*/
+        ],
+        [
+            'text' => 'Grados',
+            'route' => 'grado',
+            'icon' => 'fas fa-fw fa-award'
+            /*'can' => 'admin'*/
+        ],
+        [
+            'text' => 'Cursos',
+            'route' => 'curso',
+            'icon' => 'fas fa-fw fa-book'
+            /*'can' => 'admin'*/
+        ],
+        ['header' => 'Reportes'],
+        [
+            'text' => 'notas',
             'icon_color' => 'cyan',
             'url' => '#',
         ],

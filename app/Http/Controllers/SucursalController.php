@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateSucursal;
 use Illuminate\Http\Request;
 use App\Models\Sucursal;
 
@@ -9,10 +10,9 @@ class SucursalController extends Controller
 {
     public function __invoke()
     {
-        $sucursal = Sucursal::all();
-        return view('layouts.sucursal', compact('sucursal'));
+        $sucursales = Sucursal::paginate(5);
+        return view('layouts.sucursal', compact('sucursales'));
     }
-
 
     public function index(Request $request)
     {
@@ -26,16 +26,13 @@ class SucursalController extends Controller
             });
         }
 
-        $sucursal = $query->paginate(10);
-        return view('layouts.CRUD.sucursal', compact('sucursal'));
+        $sucursales = $query->paginate(5);
+        return view('layouts.CRUD.sucursal', compact('sucursales'));
     }
-
-
 
     public function create(CreateSucursal $request)
     {
         $Sucursal = new Sucursal();
-
 
         $Sucursal ->Nombre = $request->Nombre;
         $Sucursal ->Direccion = $request->Direccion;
@@ -43,11 +40,10 @@ class SucursalController extends Controller
 
         $Sucursal ->save();
 
-        //return redirect()->route('asignaciones');
         if ( $Sucursal ->save() == true) {
-            return back()->with("correcto", "Catedratico registrado correctamente");
+            return back()->with("correcto", "Sucursal registrada correctamente");
         } else {
-            return back()->with("incorrecto", "Error al registrar catedratico");
+            return back()->with("incorrecto", "Error al registrar sucursal");
         }
     }
 

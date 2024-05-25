@@ -56,6 +56,7 @@ Route::get('/catedratico', [CatedraticosController::class, 'index'])->name('cate
 Route::post('/regitro-catedratico', [CatedraticosController::class, 'create'])->name('catedratico.create'); // Lógica para almacenar un nuevo registro
 Route::put('/modificar-catedratico/{id}', [CatedraticosController::class, 'update'])->name('catedratico.update'); // Lógica para modificar un registro existente
 Route::delete('/eliminar-catedratico/{id}', [CatedraticosController::class, 'delete'])->name('catedratico.delete'); // Lógica para eliminar un registro existente
+Route::get('/grados/{grado}/cursos', [AsignacionController::class, 'getCursosByGrado']);
 
   /* Rutas del CRUD de Curso */
 Route::get('/curso', [CursosController::class, 'index'])->name('curso'); // Vista del filtrado de cursos

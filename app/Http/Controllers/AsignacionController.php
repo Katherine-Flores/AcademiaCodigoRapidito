@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAsignacion;
 use App\Models\Asignacion;
+use App\Models\Catedratico;
 use App\Models\Curso;
 use App\Models\Grado;
 use App\Models\Sucursal;
@@ -14,11 +15,12 @@ class AsignacionController extends Controller
 {
     public function __invoke()
     {
-        $asignaciones = Asignacion::all();
+        $asignaciones = Asignacion::paginate(5);
         $grados = Grado::all();
         $cursos = Curso::all();
         $sucursales = Sucursal::all();
-        return view('layouts.CRUD.asignaciones', compact('asignaciones', 'grados', 'cursos', 'sucursales'));
+        $catedraticos = Catedratico::all();
+        return view('layouts.CRUD.asignaciones', compact('asignaciones', 'grados', 'cursos', 'sucursales', 'catedraticos'));
     }
 
     public function index(Request $request)
@@ -26,6 +28,7 @@ class AsignacionController extends Controller
         $grados = Grado::all();
         $cursos = Curso::all();
         $sucursales = Sucursal::all();
+        $catedraticos = Catedratico::all();
         $query = Asignacion::with(['catedratico', 'sucursal', 'grado', 'curso']);
 
         if ($request->filled('busqueda')) {
@@ -48,15 +51,15 @@ class AsignacionController extends Controller
             });
         }
 
-        $asignaciones = $query->paginate(10);
-        return view('layouts.CRUD.asignaciones', compact('asignaciones', 'grados','cursos','sucursales'));
+        $asignaciones = $query->paginate(5);
+        return view('layouts.CRUD.asignaciones', compact('asignaciones', 'grados','cursos','sucursales', 'catedraticos'));
     }
 
     public function store(StoreAsignacion $request)
     {
         $asignacion = new Asignacion();
 
-        $asignacion->Fecha_Asignacion = $request->Fecha_Asignacion;
+        $asignacion->Fecha_Asignacion = now();
         $asignacion->Id_Curso = $request->Id_Curso;
         $asignacion->Codigo_Catedratico = $request->Codigo_Catedratico;
         $asignacion->Id_Sucursal = $request->Id_Sucursal;
@@ -75,7 +78,6 @@ class AsignacionController extends Controller
     public function update(Request $request, $id)
     {
         $asignacion = Asignacion::findOrFail($id);
-        $asignacion->Fecha_Asignacion = $request->Fecha_Asignacion;
         $asignacion->Id_Curso = $request->Id_Curso;
         $asignacion->Codigo_Catedratico = $request->Codigo_Catedratico;
         $asignacion->Id_Sucursal = $request->Id_Sucursal;
@@ -95,5 +97,11 @@ class AsignacionController extends Controller
         return $asignacion->delete()
             ? back()->with("incorrecto", "Error al eliminar asignación")
             : back()->with("correcto", "Asignación eliminada correctamente");
+    }
+
+    public function getCursosByGrado($gradoId)
+    {
+        $cursos = Curso::where('Id_Grado', $gradoId)->get();
+        return response()->json($cursos);
     }
 }

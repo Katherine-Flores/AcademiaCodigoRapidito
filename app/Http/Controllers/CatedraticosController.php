@@ -10,7 +10,7 @@ class CatedraticosController extends Controller
 {
     public function __invoke()
     {
-        $catedraticos = Catedratico::all();
+        $catedraticos = Catedratico::paginate(5);
         return view('layouts.CRUD.catedraticos', compact('catedraticos'));
     }
 
@@ -26,7 +26,7 @@ class CatedraticosController extends Controller
             });
         }
 
-        $catedraticos = $query->paginate(10);
+        $catedraticos = $query->paginate(5);
         return view('layouts.CRUD.catedraticos', compact('catedraticos'));
     }
 

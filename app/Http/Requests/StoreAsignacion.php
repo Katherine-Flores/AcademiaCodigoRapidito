@@ -22,7 +22,6 @@ class StoreAsignacion extends FormRequest
     public function rules(): array
     {
         return [
-            'Fecha_Asignacion' => 'required|date',
             'Id_Curso' => 'required',
             'Codigo_Catedratico' => 'required|exists:catedratico,Codigo_Catedratico',
             'Id_Sucursal' => 'required',

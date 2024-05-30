@@ -17,4 +17,9 @@ class Sucursal extends Model
     {
         return $this->hasMany(Asignacion::class, 'Id_Sucursal');
     }
+
+    public function inscripciones()
+    {
+        return $this->hasMany(Inscripcion::class, 'Id_Sucursal');
+    }
 }

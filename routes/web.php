@@ -7,6 +7,7 @@ use App\Http\Controllers\CursosController;
 use App\Http\Controllers\AcerdaController;
 use App\Http\Controllers\AsignacionController;
 use App\Http\Controllers\AlumnosController;
+use App\Http\Controllers\InscripcionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,3 +83,10 @@ Route::get('/alumno', [AlumnosController::class, 'index'])->name('alumno'); // V
 Route::post('/regitro-alumno', [AlumnosController::class, 'create'])->name('alumno.create'); // Lógica para almacenar un nuevo registro
 Route::put('/modificar-alumno/{id}', [AlumnosController::class, 'update'])->name('alumno.update'); // Lógica para modificar un registro existente
 Route::delete('/eliminar-alumno/{id}', [AlumnosController::class, 'delete'])->name('alumno.delete'); // Lógica para eliminar un registro existente
+
+/* Rutas de Inscripción */
+Route::get('/inscripcion', [InscripcionController::class, 'index'])->name('inscripcion'); // Vista del filtrado de las inscripciones
+Route::get('/inscripciones', [InscripcionController::class, '__invoke'])->name('inscripcion.invoke'); // Vista de todos los registros de la tabla inscripcion
+Route::post('/regitro-inscripcion', [InscripcionController::class, 'create'])->name('inscripcion.create'); // Lógica para almacenar un nuevo registro
+Route::put('/modificar-inscripcion/{id}', [InscripcionController::class, 'update'])->name('inscripcion.update'); // Lógica para modificar un registro existente
+Route::delete('/eliminar-inscripcion/{id}', [InscripcionController::class, 'delete'])->name('inscripcion.delete'); // Lógica para eliminar un registro existente

@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Sucursales-Table')
+@section('title', 'Inscripcion-Table')
 
 @section('content_header')
-    <h1>Gestión de Sucursales</h1>
+    <h1>Gestión de Inscripciones</h1>
 @stop
 
 @section('content')
     @if(session("correcto"))
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     icon: 'success',
                     title: '¡Éxito!',
@@ -23,7 +23,7 @@
 
     @if(session("incorrecto"))
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     icon: 'error',
                     title: '¡Error!',
@@ -36,9 +36,9 @@
     @endif
 
     <div class="d-md-flex justify-content-md-end me-5">
-        <form action="{{ route('sucursal') }}" method="GET">
-            <div class="btn-group">
-                <input type="text" name="busqueda" class="form-control" placeholder="Id o Nombre">
+        <form action="{{ route('inscripcion') }}" method="GET">
+            <div class="btn-group" style="width: 120%;">
+                <input type="text" name="busqueda" class="form-control" placeholder="Código o Nombre del alumno">
                 <input type="submit" value="Buscar" class="btn btn-primary">
             </div>
         </form>
@@ -46,7 +46,8 @@
 
     <div class="p-5 table-responsive">
         <!-- Modal de registrar-->
-        <div class="modal fade" id="modalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -54,25 +55,25 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{route('sucursal.create')}}" method="POST">
+                        <form action="{{route('inscripcion.create')}}" method="POST">
                             @csrf
-
                             <div class="form-group row mb-3">
-                                <label class="col-sm-5 col-form-label">Nombre Sucursal</label>
+                                <label class="col-sm-5 col-form-label">Fecha</label>
                                 <div class="col-sm-7">
-                                    <input type="text" name="Nombre" class="form-control">
+                                    <input type="date" name="Fecha_Inscripcion" class="form-control"
+                                           value="{{ now()->toDateString() }}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
-                                <label class="col-sm-5 col-form-label">Dirección</label>
+                                <label class="col-sm-5 col-form-label">Código del Alumno</label>
                                 <div class="col-sm-7">
-                                    <input type="text" name="Direccion" class="form-control">
+                                    <input type="text" name="Codigo_Alumno" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
-                                <label class="col-sm-5 col-form-label">Teléfono</label>
+                                <label class="col-sm-5 col-form-label">Asignación (ID)</label>
                                 <div class="col-sm-7">
-                                    <input type="number" name="Telefono" class="form-control">
+                                    <input type="number" name="Id_Asignacion" class="form-control" required>
                                 </div>
                             </div>
 
@@ -87,34 +88,41 @@
         </div>
 
         <button class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#modalRegistrar">
-            Nueva Sucursal
+            Nueva Inscripción
         </button>
 
         <table class="table table-striped table-bordered table-hover">
             <thead class="bg-primary text-white">
             <tr>
                 <th class="align-middle">Id</th>
-                <th class="align-middle">Nombre</th>
-                <th class="align-middle">Dirección</th>
-                <th class="align-middle">Teléfono</th>
+                <th class="align-middle">Fecha</th>
+                <th class="align-middle">Alumno</th>
+                <th class="align-middle">Curso</th>
+                <th class="align-middle">Grado</th>
+                <th class="align-middle">Catedrático</th>
+                <th class="align-middle">Sucursal</th>
+                <th class="align-middle">Monto</th>
                 <th class="align-middle">Opciones</th>
             </tr>
             </thead>
             <tbody class="table-group-divider">
-            @foreach($sucursales as $Sucursal)
+            @foreach($inscripciones as $inscripcion)
                 <tr>
-                    <td>{{$Sucursal->Id_Sucursal}}</td>
-                    <td>{{$Sucursal->Nombre}}</td>
-                    <td>{{$Sucursal->Direccion}}</td>
-                    <td>{{$Sucursal->Telefono}}</td>
-
+                    <td>{{ $inscripcion->Id_Inscripcion }}</td>
+                    <td>{{ $inscripcion->Fecha_Inscripcion }}</td>
+                    <td>{{ $inscripcion->alumno->Nombre }}</td>
+                    <td>{{ $inscripcion->asignacion->curso->Nombre }}</td>
+                    <td>{{ $inscripcion->asignacion->grado->Nombre }}</td>
+                    <td>{{ $inscripcion->asignacion->catedratico->Nombre}}</td>
+                    <td>{{ $inscripcion->asignacion->sucursal->Nombre }}</td>
+                    <td>{{ $inscripcion->Monto }}</td>
                     <td>
                         <a href="" class="btn btn-warning"
-                           data-bs-toggle="modal" data-bs-target="#modalEditar{{$Sucursal->Id_Sucursal}}">
+                           data-bs-toggle="modal" data-bs-target="#modalEditar{{$inscripcion->Id_Inscripcion}}">
                             <i class='bx bxs-edit'></i>
                         </a>
                         <!-- Formulario de Eliminar -->
-                        <form action="{{ route('sucursal.delete', $Sucursal->Id_Sucursal) }}" method="POST"
+                        <form action="{{ route('inscripcion.delete', $inscripcion->Id_Inscripcion) }}" method="POST"
                               style="display:inline;" class="d-inline delete-form">
                             @csrf
                             @method('DELETE')
@@ -125,45 +133,45 @@
                     </td>
 
                     <!-- Modal de editar -->
-                    <div class="modal fade" id="modalEditar{{$Sucursal->Id_Sucursal}}" tabindex="-1"
+                    <div class="modal fade" id="modalEditar{{$inscripcion->Id_Inscripcion}}" tabindex="-1"
                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar Sucursal</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar Inscripcion</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('sucursal.update', $Sucursal->Id_Sucursal) }}"
+                                    <form action="{{ route('inscripcion.update', $inscripcion->Id_Inscripcion) }}"
                                           method="POST">
                                         @csrf
                                         @method('PUT')
-
                                         <div class="form-group row mb-3">
-                                            <label class="col-sm-5 col-form-label">Nombre </label>
+                                            <label class="col-sm-5 col-form-label">Fecha</label>
                                             <div class="col-sm-7">
-                                                <input type="text" name="Nombre" class="form-control"
-                                                       value="{{$Sucursal->Nombre}}">
+                                                <input type="date" name="Fecha_Inscripcion" class="form-control"
+                                                       value="{{ $inscripcion->Fecha_Inscripcion }}" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row mb-3">
-                                            <label class="col-sm-5 col-form-label">Direccion</label>
+                                            <label class="col-sm-5 col-form-label">Código del Alumno</label>
                                             <div class="col-sm-7">
-                                                <input type="text" name="Direccion" class="form-control"
-                                                       value="{{$Sucursal->Direccion}}">
+                                                <input type="text" name="Codigo_Alumno" class="form-control"
+                                                       value="{{ $inscripcion->Codigo_Alumno }}" required>
                                             </div>
                                         </div>
                                         <div class="form-group row mb-3">
-                                            <label class="col-sm-5 col-form-label">Telefono</label>
+                                            <label class="col-sm-5 col-form-label">Asignación (ID)</label>
                                             <div class="col-sm-7">
-                                                <input type="number" name="Telefono" class="form-control"
-                                                       value="{{$Sucursal->Telefono}}">
+                                                <input type="number" name="Id_Asignacion" class="form-control"
+                                                       value="{{ $inscripcion->Id_Asignacion }}" required>
                                             </div>
                                         </div>
 
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Cerrar
                                             </button>
                                             <button type="submit" class="btn btn-primary">Modificar</button>
                                         </div>
@@ -177,7 +185,7 @@
             </tbody>
         </table>
         <div class="d-flex justify-content-center">
-            {{ $sucursales->appends(request()->input())->links() }}
+            {{ $inscripciones->appends(request()->input())->links() }}
         </div>
     </div>
 @stop
@@ -186,14 +194,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet'
+          href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap"
+          rel="stylesheet">
     <style>
-        *{
+        * {
             font-family: "Poppins", sans-serif;
         }
     </style>

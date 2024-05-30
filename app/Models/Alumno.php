@@ -12,4 +12,9 @@ class Alumno extends Model
     protected $table = "alumno";
 
     protected $primaryKey = 'Codigo_Alumno';
+
+    public function inscripciones()
+    {
+        return $this->hasMany(inscripcion::class, 'Codigo_Alumno');
+    }
 }

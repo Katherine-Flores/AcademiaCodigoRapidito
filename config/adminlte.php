@@ -312,7 +312,7 @@ return [
         ],
         [
             'text' => 'Inscripciones',
-            'url' => '#',
+            'route' => 'inscripcion',
             'icon' => 'fas fa-fw fa-user-plus'
             /*'can' => 'admin'*/
         ],
@@ -351,6 +351,16 @@ return [
         [
             'text' => 'notas',
             'icon_color' => 'cyan',
+            'url' => '#',
+        ],
+        [
+            'text' => 'Alumnos Inscritos',
+            'icon_color' => 'warning',
+            'url' => '#',
+        ],
+        [
+            'text' => 'Alumnos Registrados',
+            'icon_color' => 'susses',
             'url' => '#',
         ],
     ],

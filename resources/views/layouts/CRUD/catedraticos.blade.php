@@ -211,6 +211,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        *{
+            font-family: "Poppins", sans-serif;
+        }
+    </style>
 @stop
 
 @section('js')

@@ -91,13 +91,13 @@
                             <div class="form-group row mb-3">
                                 <label class="col-sm-5 col-form-label">Código de Catedrático</label>
                                 <div class="col-sm-7">
-                                    <select name="Codigo_Catedratico" class="form-select">
-                                        <option selected>Seleccione un catedrático</option>
+                                    <input type="text" list="data" name="Codigo_Catedratico" class="form-control">
+                                    <datalist id="data">
                                         @foreach($catedraticos as $catedratico)
                                             <option
                                                 value="{{ $catedratico->Codigo_Catedratico }}">{{ $catedratico->Nombre }}</option>
                                         @endforeach
-                                    </select>
+                                    </datalist>
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
@@ -213,13 +213,13 @@
                                         <div class="form-group row mb-3">
                                             <label class="col-sm-5 col-form-label">Código de Catedrático</label>
                                             <div class="col-sm-7">
-                                                <select name="Codigo_Catedratico" class="form-select">
-                                                    <option selected>Seleccione un catedrático</option>
+                                                <input type="text" list="data" name="Codigo_Catedratico" class="form-control" value="{{$catedratico->Codigo_Catedratico}}">
+                                                <datalist id="data">
                                                     @foreach($catedraticos as $catedratico)
                                                         <option
-                                                            value="{{ $catedratico->Codigo_Catedratico }}" {{ $asignacion->Codigo_Catedratico == $catedratico->Codigo_Catedratico ? 'selected' : '' }}>{{ $catedratico->Nombre }}</option>
+                                                            value="{{ $catedratico->Codigo_Catedratico }}">{{ $catedratico->Nombre }}</option>
                                                     @endforeach
-                                                </select>
+                                                </datalist>
                                             </div>
                                         </div>
                                         <div class="form-group row mb-3">

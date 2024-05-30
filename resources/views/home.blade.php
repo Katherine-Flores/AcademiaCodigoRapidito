@@ -223,6 +223,7 @@
 
             .contenido {
                 margin-bottom: 160px;
+                flex-direction: column;
             }
 
             .title{
@@ -252,7 +253,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a href="{{route('sucursal.invoke')}}"
-                       class="btn-link {{ Request::is('sucursal') ? 'active' : '' }}">Sucursales</a>
+                       class="btn-link {{ Request::is('sucursales') ? 'active' : '' }}">Sucursales</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('grados.invoke')}}" class="btn-link {{ Request::is('grados') ? 'active' : '' }}">Grados</a>
@@ -319,17 +320,9 @@
 
 <footer class="fixed-bottom footer text-ui">
     <div class="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center">
-        <div class="d-flex align-items-center">
+        <div class="d-flex  justify-content-center align-items-center">
             <i class="fi fi-sr-graduation-cap ms-5 me-3" style="font-size: 25px; color: var(--cornflower-blue)"></i>
             <p class="mb-0">© 2024 Academia Código Rapidito. All rights reserved.</p>
-        </div>
-        <div class="d-flex align-items-center app-links">
-            <p class="mb-0 me-3">Descarga la App</p>
-            <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Download_on_the_App_Store_Badge_ESMX_RGB_blk.svg/1280px-Download_on_the_App_Store_Badge_ESMX_RGB_blk.svg.png"
-                style="width: auto; height: 40px;">
-            <img src="https://www.ayuntamientoparla.es/ficheros/app-cie/google%20play.png/download"
-                 style="width: auto; height: 40px;" class="ms-3 me-5">
         </div>
     </div>
 </footer>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\CatedraticosController;
 use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\GradosController;
@@ -90,3 +91,8 @@ Route::get('/inscripciones', [InscripcionController::class, '__invoke'])->name('
 Route::post('/regitro-inscripcion', [InscripcionController::class, 'create'])->name('inscripcion.create'); // Lógica para almacenar un nuevo registro
 Route::put('/modificar-inscripcion/{id}', [InscripcionController::class, 'update'])->name('inscripcion.update'); // Lógica para modificar un registro existente
 Route::delete('/eliminar-inscripcion/{id}', [InscripcionController::class, 'delete'])->name('inscripcion.delete'); // Lógica para eliminar un registro existente
+
+/* Rutas de Reportes */
+Route::get('/reportes-inscripciones', [ExportController::class, 'index'])->name('reportes'); // Vista para exportar reportes de las inscripciones
+Route::get('/export-inscripciones', [ExportController::class, 'export'])->name('exportar'); // Lógica para exportar
+

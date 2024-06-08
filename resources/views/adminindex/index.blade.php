@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+    @role('administrador')
     <div class="container">
         <div class="row g-0">
             <div class="col-lg-4">
@@ -84,6 +85,43 @@
             </div>
         </div>
     </div>
+    @endrole
+
+    @role('catedratico')
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-lg-4">
+                <div class="card m-3 p-3">
+                    <h3 class="card-name">Bienvenido Catedratico</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endrole
+
+    @role('alumno')
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-lg-4">
+                <div class="card m-3 p-3">
+                    <h3 class="card-name">Bienvenido Alumno</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endrole
+
+    @role('visitante')
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-lg-4">
+                <div class="card m-3 p-3">
+                    <h3 class="card-name">Bienvenido Visitante</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endrole
 @stop
 
 @section('css')

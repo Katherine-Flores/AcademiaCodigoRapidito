@@ -307,45 +307,45 @@ return [
         [
             'text' => 'Asignaciones',
             'route' => 'asignacion.invoke',
-            'icon' => 'fas fa-fw fa-clipboard'
-            /*'can' => 'admin'*/
+            'icon' => 'fas fa-fw fa-clipboard',
+            'can' => 'administrador'
         ],
         [
             'text' => 'Inscripciones',
             'route' => 'inscripcion',
-            'icon' => 'fas fa-fw fa-user-plus'
-            /*'can' => 'admin'*/
+            'icon' => 'fas fa-fw fa-user-plus',
+            'can' => 'administrador'
         ],
         ['header' => 'Gestión de Entidades'],
         [
             'text' => 'Alumnos',
             'route' => 'alumno.invoke',
-            'icon' => 'fas fa-fw fa-user'
-            /*'can' => 'admin'*/
+            'icon' => 'fas fa-fw fa-user',
+            'can' => 'administrador'
         ],
         [
             'text' => 'Catedraticos',
             'route' => 'catedraticos.invoke',
-            'icon' => 'fas fa-fw fa-chalkboard'
-            /*'can' => 'admin'*/
+            'icon' => 'fas fa-fw fa-chalkboard',
+            'can' => 'administrador'
         ],
         [
             'text' => 'Sucursales',
             'route' => 'sucursal',
-            'icon' => 'fas fa-fw fa-school'
-            /*'can' => 'admin'*/
+            'icon' => 'fas fa-fw fa-school',
+            'can' => 'administrador'
         ],
         [
             'text' => 'Grados',
             'route' => 'grado',
-            'icon' => 'fas fa-fw fa-award'
-            /*'can' => 'admin'*/
+            'icon' => 'fas fa-fw fa-award',
+            'can' => 'administrador'
         ],
         [
             'text' => 'Cursos',
             'route' => 'curso',
-            'icon' => 'fas fa-fw fa-book'
-            /*'can' => 'admin'*/
+            'icon' => 'fas fa-fw fa-book',
+            'can' => 'administrador'
         ],
         ['header' => 'Reportes'],
         [
